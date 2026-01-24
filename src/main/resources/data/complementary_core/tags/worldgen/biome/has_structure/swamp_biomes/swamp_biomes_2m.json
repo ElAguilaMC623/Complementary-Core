@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:mangrove_swamp",
+    { "id": "regions_unexplored:old_growth_bayou", "required": false }
+  ]
+}

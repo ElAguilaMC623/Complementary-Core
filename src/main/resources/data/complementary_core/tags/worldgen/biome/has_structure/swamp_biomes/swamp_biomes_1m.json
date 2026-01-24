@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:swamp",
+    { "id": "biomesoplenty:bayou", "required": false },
+    { "id": "biomesoplenty:wetland", "required": false },
+    { "id": "regions_unexplored:old_growth_bayou", "required": false }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:villages",
+    "minecraft:ruined_portal",
+    "minecraft:mansion",
+    "minecraft:pillager_outpost",
+    "minecraft:trail_ruins",
+    "minecraft:igloo",
+
+    "complementary_structures:camps/desert_camp",
+    "complementary_structures:camps/jungle_camp",
+    "complementary_structures:camps/savanna_camp",
+    "complementary_structures:camps/snow_camp",
+    "complementary_structures:camps/wandering_trader_camp",
+
+    "complementary_structures:farms/bee_small_garden",
+    "complementary_structures:farms/wheat_farm",
+
+    "complementary_structures:houses/beach_house",
+    "complementary_structures:houses/big_oak_house",
+    "complementary_structures:houses/big_snow_house",
+    "complementary_structures:houses/mangrove_house",
+    "complementary_structures:houses/small_birch_house",
+    "complementary_structures:houses/small_desert_house",
+    "complementary_structures:houses/small_jungle_house",
+    "complementary_structures:houses/small_oak_house",
+    "complementary_structures:houses/taiga_house",
+    "complementary_structures:houses/vindicator_house",
+
+    "complementary_structures:illagers/evoker_tower",
+    "complementary_structures:illagers/illager_camp",
+    "complementary_structures:illagers/illager_camp_2",
+    "complementary_structures:illagers/illager_caravan",
+    "complementary_structures:illagers/illager_castle",
+    "complementary_structures:illagers/illager_palace",
+    "complementary_structures:illagers/illager_palisade",
+    "complementary_structures:illagers/illager_prison",
+    "complementary_structures:illagers/illager_pyramid_crypt",
+    "complementary_structures:illagers/illager_secret_armory",
+    "complementary_structures:illagers/illager_small_forge",
+
+    "complementary_structures:others/beach_umbrella",
+    "complementary_structures:others/medium_trading_post",
+    "complementary_structures:others/small_trading_post",
+    "complementary_structures:others/stone_well",
+    "complementary_structures:others/witch_potion_circle",
+
+    "complementary_structures:pyramids/great_desert_pyramid",
+    "complementary_structures:pyramids/jungle_pyramid",
+
+    "complementary_structures:spawners/husk_dungeon",
+    "complementary_structures:spawners/slime_spawner",
+    "complementary_structures:spawners/stray_dungeon",
+    "complementary_structures:spawners/witch_dungeon",
+
+    "complementary_structures:towers/librarian_tower",
+    "complementary_structures:towers/prismarine_tower",
+    "complementary_structures:towers/ruined_stone_tower",
+    "complementary_structures:towers/savanna_watchtower",
+    "complementary_structures:towers/small_desert_tower",
+    "complementary_structures:towers/small_snow_tower",
+    "complementary_structures:towers/watchtower"
+  ]
+}
