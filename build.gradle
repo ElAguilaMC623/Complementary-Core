@@ -5,7 +5,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = "0.2.0"
+version = "1.0.0"
 group = mod_group_id
 
 base {
@@ -190,8 +190,8 @@ publishing {
     publications {
         mavenJava(MavenPublication) {
             groupId = 'net.elaguilamc623'
-            artifactId = 'complementary_core'
-            version = '0.2.0'
+            artifactId = 'complementary_core_forge'
+            version = '1.0.0'
 
             from components.java
         }
