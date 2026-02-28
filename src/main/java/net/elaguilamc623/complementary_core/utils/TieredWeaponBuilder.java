@@ -3,7 +3,6 @@ package net.elaguilamc623.complementary_core.utils;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
-
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;

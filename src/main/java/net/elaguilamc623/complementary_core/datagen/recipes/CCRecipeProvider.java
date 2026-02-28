@@ -277,4 +277,17 @@ public abstract class CCRecipeProvider extends RecipeProvider implements ICondit
                 .unlockedBy(getHasName(block), has(block))
                 .save(consumer, name + "_from_block");
     }
+
+    protected void barsRecipe(Consumer<FinishedRecipe> consumer,
+                                  ItemLike output,
+                                  ItemLike material) {
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 16)
+                .define('m', material)
+                .pattern("mmm")
+                .pattern("mmm")
+                .unlockedBy("has_material", has(material))
+                .save(consumer);
+    }
+
 }

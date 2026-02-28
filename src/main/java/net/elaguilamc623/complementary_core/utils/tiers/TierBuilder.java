@@ -1,6 +1,5 @@
 package net.elaguilamc623.complementary_core.utils.tiers;
 
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
