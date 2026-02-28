@@ -1,4 +1,4 @@
-package net.elaguilamc623.complementary_core.utils;
+package net.elaguilamc623.complementary_core.utils.weapons;
 
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;

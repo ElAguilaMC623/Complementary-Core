@@ -10,7 +10,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.ForgeTier;
 import net.minecraftforge.common.TierSortingRegistry;
-
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -18,13 +17,14 @@ public class TierBuilder {
 
     private final String name;
 
-    private int level = 2; // iron
+    private int level = 2;
     private int durability = 250;
     private float speed = 6.0f;
     private float attackDamage = 2.0f;
     private int enchantability = 14;
 
-    private TagKey<Block> requiredTag = BlockTags.NEEDS_IRON_TOOL;
+    private TagKey<Block> requiredTag =
+            BlockTags.create(new ResourceLocation("minecraft", "needs_iron_tool"));
 
     private Supplier<Item> repairItem = () -> Items.IRON_INGOT;
 

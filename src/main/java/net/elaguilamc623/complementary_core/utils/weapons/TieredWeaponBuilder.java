@@ -1,4 +1,4 @@
-package net.elaguilamc623.complementary_core.utils;
+package net.elaguilamc623.complementary_core.utils.weapons;
 
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
@@ -40,7 +40,7 @@ public class TieredWeaponBuilder {
 
     private final Map<Tier, RegistryObject<Item>> registeredItems = new LinkedHashMap<>();
 
-    public void register() {
+    public TieredWeaponBuilder register() {
         for (var entry : factories.entrySet()) {
             Tier tier = entry.getKey();
             ItemFactory factory = entry.getValue();
@@ -53,6 +53,7 @@ public class TieredWeaponBuilder {
 
             registeredItems.put(tier, item);
         }
+        return this;
     }
 
     private static final Map<Tier, String> TIER_NAMES = Map.of(
