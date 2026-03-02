@@ -4,8 +4,10 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public abstract class CCBlockStateProvider extends BlockStateProvider {
@@ -107,5 +109,13 @@ public abstract class CCBlockStateProvider extends BlockStateProvider {
                 models().torchWall(name + "_wall", modLoc("block/" + name)),
                 90
         );
+    }
+
+    protected void simpleCrossBlock(Block block) {
+        String name = ForgeRegistries.BLOCKS.getKey(block).getPath();
+
+        ModelFile model = models().cross(name, modLoc("block/" + name));
+
+        getVariantBuilder(block).partialState().setModels(new ConfiguredModel(model));
     }
 }

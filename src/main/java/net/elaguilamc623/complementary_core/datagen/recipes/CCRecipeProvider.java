@@ -290,4 +290,16 @@ public abstract class CCRecipeProvider extends RecipeProvider implements ICondit
                 .save(consumer);
     }
 
+    protected void defaultCrystalBlockRecipe(Consumer<FinishedRecipe> consumer,
+                              ItemLike output,
+                              ItemLike material) {
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 1)
+                .define('m', material)
+                .pattern("mm")
+                .pattern("mm")
+                .unlockedBy("has_material", has(material))
+                .save(consumer);
+    }
+
 }
