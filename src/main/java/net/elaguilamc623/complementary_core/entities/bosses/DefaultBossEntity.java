@@ -10,18 +10,17 @@ import net.minecraft.world.level.Level;
 
 public abstract class DefaultBossEntity extends Monster {
 
+    protected boolean bossBarEnabled = false;
     protected boolean isSleep = true;
+    protected boolean isWakingUp = false;
 
     protected DefaultBossEntity(EntityType<? extends Monster> entityType, Level level) {
         super(entityType, level);
     }
 
-    public abstract void onBossActivated();
-
     public void wakeUp() {
         this.isSleep = false;
         playWakeUpAnimation();
-        onBossActivated();
     }
 
     public abstract void playWakeUpAnimation();
@@ -34,10 +33,18 @@ public abstract class DefaultBossEntity extends Monster {
     public void tick() {
         super.tick();
 
-        if (this.isSleep) {
-            Player nearest = this.level().getNearestPlayer(this, 10.0D);
+        if (this.tickCount < 20) {
+            return;
+        }
+
+        if (this.isSleep && !this.isWakingUp) {
+
+            Player nearest = this.level().getNearestPlayer(this, 10.0F);
+
             if (nearest != null) {
-                wakeUp();
+                this.isSleep = false;
+                this.isWakingUp = true;
+                this.wakeUp();
             }
         }
     }
@@ -48,7 +55,9 @@ public abstract class DefaultBossEntity extends Monster {
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
-        playerBossEvent.addPlayer(player);
+        if (bossBarEnabled) {
+            playerBossEvent.addPlayer(player);
+        }
     }
 
     @Override
