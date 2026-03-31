@@ -50,7 +50,7 @@ public abstract class DefaultBossEntity extends Monster {
     }
 
     protected final ServerBossEvent playerBossEvent =
-            new ServerBossEvent(this.getDisplayName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
+            new ServerBossEvent(this.getType().getDescription(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
 
     @Override
     public void startSeenByPlayer(ServerPlayer player) {

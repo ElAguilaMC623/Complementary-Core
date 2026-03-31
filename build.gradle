@@ -5,7 +5,7 @@ plugins {
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = "1.2.8"
+version = "1.2.10"
 group = mod_group_id
 
 base {
@@ -165,6 +165,10 @@ tasks.named('processResources', ProcessResources).configure {
     }
 }
 
+// tasks.named("jar") {
+//    finalizedBy("reobfJar")
+// }
+
 // Example for how to get properties into the manifest for reading at runtime.
 tasks.named('jar', Jar).configure {
     manifest {
@@ -191,7 +195,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'net.elaguilamc623'
             artifactId = 'complementary_core'
-            version = '1.2.8'
+            version = '1.2.10'
 
             from components.java
         }
