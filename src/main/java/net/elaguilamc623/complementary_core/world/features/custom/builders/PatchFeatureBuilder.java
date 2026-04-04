@@ -2,9 +2,11 @@ package net.elaguilamc623.complementary_core.world.features.custom.builders;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.Vec3i;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -22,7 +24,7 @@ public class PatchFeatureBuilder {
     private final ResourceKey<ConfiguredFeature<?, ?>> key;
 
     private BlockState state;
-    private BlockPredicate predicate = BlockPredicate.matchesBlocks(BlockPos.ZERO, Blocks.AIR);
+    private BlockPredicate predicate;
     private int tries = 1;
     private int xzSpread = 0;
     private int ySpread = 0;
@@ -42,6 +44,14 @@ public class PatchFeatureBuilder {
         this.predicate = BlockPredicate.allOf(
                 BlockPredicate.matchesBlocks(BlockPos.ZERO, Blocks.AIR),
                 BlockPredicate.matchesBlocks(BlockPos.ZERO.below(), block)
+        );
+        return this;
+    }
+
+    public PatchFeatureBuilder below(TagKey<Block> tag) {
+        this.predicate = BlockPredicate.allOf(
+                BlockPredicate.matchesBlocks(Vec3i.ZERO, Blocks.AIR),
+                BlockPredicate.matchesTag(new Vec3i(0, -1, 0), tag)
         );
         return this;
     }
