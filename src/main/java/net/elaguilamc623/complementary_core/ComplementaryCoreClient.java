@@ -24,8 +24,5 @@ public class ComplementaryCoreClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
-        ComplementaryCore.LOGGER.info("HELLO FROM CLIENT SETUP");
-        ComplementaryCore.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
     }
 }
