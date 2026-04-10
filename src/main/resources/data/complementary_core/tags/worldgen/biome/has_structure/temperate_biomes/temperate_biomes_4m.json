@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:meadow",
+    "minecraft:birch_forest",
+    "minecraft:old_growth_birch_forest",
+    { "id": "biomesoplenty:clover_patch", "required": false },
+    { "id": "biomesoplenty:lavender_field", "required": false },
+    { "id": "biomesoplenty:orchard", "required": false },
+    { "id": "biomesoplenty:seasonal_orchard", "required": false },
+    { "id": "biomesoplenty:seasonal_forest", "required": false },
+    { "id": "biomesoplenty:rocky_shrubland", "required": false },
+    { "id": "biomesoplenty:shrubland", "required": false },
+    { "id": "terralith:sakura_grove", "required": false },
+    { "id": "terralith:sakura_valley", "required": false },
+    { "id": "terralith:steppe", "required": false },
+    { "id": "terralith:temperate_highlands", "required": false },
+    { "id": "terralith:snowy_cherry_grove", "required": false },
+    { "id": "terralith:alpine_highlands", "required": false },
+    { "id": "terralith:yosemite_lowlands", "required": false },
+    { "id": "terralith:highlands", "required": false },
+    { "id": "terralith:birch_taiga", "required": false },
+    { "id": "terralith:valley_clearing", "required": false },
+    { "id": "terralith:white_cliffs", "required": false },
+    { "id": "regions_unexplored:silver_birch_forest", "required": false },
+    { "id": "regions_unexplored:rocky_meadow", "required": false }
+  ]
+}
