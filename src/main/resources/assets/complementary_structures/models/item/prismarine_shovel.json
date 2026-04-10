@@ -1,6 +1,0 @@
-{
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "complementary_structures:item/prismarine_shovel"
-  }
-}
