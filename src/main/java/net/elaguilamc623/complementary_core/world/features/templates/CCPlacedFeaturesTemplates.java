@@ -1,4 +1,4 @@
-package net.elaguilamc623.complementary_core.world.features;
+package net.elaguilamc623.complementary_core.world.features.templates;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderGetter;

@@ -1,17 +1,16 @@
 package net.elaguilamc623.complementary_core.world.features.custom;
 
 import com.mojang.serialization.Codec;
+import net.elaguilamc623.complementary_core.world.features.config.IFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 
-public abstract class AbstractGroundFeature<FC extends FeatureConfiguration> extends Feature<FC> {
+public abstract class AbstractGroundFeature<FC extends IFeatureConfig> extends Feature<FC> {
 
     public AbstractGroundFeature(Codec<FC> codec) {
         super(codec);
@@ -29,7 +28,7 @@ public abstract class AbstractGroundFeature<FC extends FeatureConfiguration> ext
             return false;
         }
 
-        if (!isValidGround(level, surface.below())) {
+        if (!isValidGround(level, surface.below(), context.config())) {
             return false;
         }
 
@@ -42,9 +41,8 @@ public abstract class AbstractGroundFeature<FC extends FeatureConfiguration> ext
 
     protected abstract boolean placeGroundFeature(WorldGenLevel level, RandomSource randomSource, BlockPos blockPos, FC config);
 
-    protected boolean isValidGround(WorldGenLevel level, BlockPos blockPos) {
-        BlockState state = level.getBlockState(blockPos);
-        return state.is(BlockTags.DIRT) || state.is(BlockTags.SAND) || state.is(BlockTags.SNOW);
+    protected boolean isValidGround(WorldGenLevel level, BlockPos blockPos, FC config) {
+        return level.getBlockState(blockPos).is(config.allowedGround());
     }
 
     protected boolean isAirOrReplaceable(WorldGenLevel level, BlockPos blockPos) {
@@ -54,18 +52,16 @@ public abstract class AbstractGroundFeature<FC extends FeatureConfiguration> ext
 
     protected BlockPos findSurface(WorldGenLevel level, BlockPos blockPos) {
         BlockPos.MutableBlockPos cursor = blockPos.mutable();
-
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             BlockState state = level.getBlockState(cursor);
             BlockState below = level.getBlockState(cursor.below());
 
-            if (!state.isAir() && below.isSolid()) {
+            if (isAirOrReplaceable(level, cursor) && below.isSolid()) {
                 return cursor;
             }
-
             cursor.move(Direction.DOWN);
         }
-
         return null;
     }
+
 }

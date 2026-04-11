@@ -1,4 +1,4 @@
-package net.elaguilamc623.complementary_core.world.features;
+package net.elaguilamc623.complementary_core.world.features.config;
 
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;

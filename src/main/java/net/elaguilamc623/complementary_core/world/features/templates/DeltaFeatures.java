@@ -1,4 +1,4 @@
-package net.elaguilamc623.complementary_core.world.features.custom;
+package net.elaguilamc623.complementary_core.world.features.templates;
 
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
