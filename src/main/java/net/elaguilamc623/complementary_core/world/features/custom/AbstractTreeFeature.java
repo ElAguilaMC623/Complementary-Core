@@ -1,12 +1,12 @@
 package net.elaguilamc623.complementary_core.world.features.custom;
 
 import com.mojang.serialization.Codec;
-import net.elaguilamc623.complementary_core.world.features.config.custom.GroundFeatureConfig;
+import net.elaguilamc623.complementary_core.world.features.config.IFeatureConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.WorldGenLevel;
 
-public abstract class AbstractTreeFeature<FC extends GroundFeatureConfig> extends AbstractGroundFeature<FC> {
+public abstract class AbstractTreeFeature<FC extends IFeatureConfig> extends AbstractGroundFeature<FC> {
 
     public AbstractTreeFeature(Codec<FC> codec) {
         super(codec);

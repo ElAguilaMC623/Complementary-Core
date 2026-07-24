@@ -71,4 +71,21 @@ public class CCPlacedFeaturesTemplates {
                 )
         );
     }
+
+    public static PlacedFeature treePlacedFeatureWithoutSaplingRestriction(
+            HolderGetter<ConfiguredFeature<?, ?>> configured,
+            ResourceKey<ConfiguredFeature<?, ?>> featureKey,
+            int count,
+            Block sapling
+    ) {
+        BlockState saplingState = sapling.defaultBlockState();
+
+        return new PlacedFeature(configured.getOrThrow(featureKey), List.of(
+                CountPlacement.of(count),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BiomeFilter.biome()
+        ));
+    }
 }

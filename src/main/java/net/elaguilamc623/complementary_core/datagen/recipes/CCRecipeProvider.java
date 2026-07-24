@@ -117,11 +117,12 @@ public abstract class CCRecipeProvider extends RecipeProvider implements ICondit
     protected void fenceAndGateRecipes(Consumer<FinishedRecipe> consumer,
                                        ItemLike planks,
                                        ItemLike fence,
-                                       ItemLike fenceGate) {
+                                       ItemLike fenceGate,
+                                       ItemLike stick) {
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, fence, 3)
                 .define('#', planks)
-                .define('X', net.minecraft.world.item.Items.STICK)
+                .define('X', stick)
                 .pattern("#X#")
                 .pattern("#X#")
                 .unlockedBy("has_planks", has(planks))
@@ -129,7 +130,7 @@ public abstract class CCRecipeProvider extends RecipeProvider implements ICondit
 
         ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, fenceGate)
                 .define('#', planks)
-                .define('X', net.minecraft.world.item.Items.STICK)
+                .define('X', stick)
                 .pattern("X#X")
                 .pattern("X#X")
                 .unlockedBy("has_planks", has(planks))
