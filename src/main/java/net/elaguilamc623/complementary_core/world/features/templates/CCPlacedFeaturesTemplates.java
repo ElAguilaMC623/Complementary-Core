@@ -72,7 +72,7 @@ public class CCPlacedFeaturesTemplates {
         );
     }
 
-    public static PlacedFeature treePlacedFeatureWithoutSaplingRestriction(
+    /* public static PlacedFeature treePlacedFeatureWithoutSaplingRestriction(
             HolderGetter<ConfiguredFeature<?, ?>> configured,
             ResourceKey<ConfiguredFeature<?, ?>> featureKey,
             int count,
@@ -87,5 +87,5 @@ public class CCPlacedFeaturesTemplates {
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
                 BiomeFilter.biome()
         ));
-    }
+    } */
 }
