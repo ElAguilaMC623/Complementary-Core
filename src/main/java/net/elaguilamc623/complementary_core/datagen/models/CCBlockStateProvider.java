@@ -5,9 +5,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 public abstract class CCBlockStateProvider extends BlockStateProvider {
 
@@ -22,11 +24,11 @@ public abstract class CCBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 
-    protected void blockWithItem(DeferredBlock<Block> block) {
+    protected void blockWithItem(DeferredHolder<Block, Block> block) {
         simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 
-    protected void blockItem(DeferredBlock<Block> block) {
+    protected void blockItem(DeferredHolder<Block, Block> block) {
         simpleBlockItem(
                 block.get(),
                 new ModelFile.UncheckedModelFile(
@@ -112,4 +114,19 @@ public abstract class CCBlockStateProvider extends BlockStateProvider {
                 90
         );
     }
+
+    protected void simpleCrossBlock(Block block) {
+        String name = BuiltInRegistries.BLOCK.getKey(block).getPath();
+
+        ModelFile model = models().cross(name, modLoc("block/" + name));
+
+        getVariantBuilder(block).partialState().setModels(new ConfiguredModel(model));
+    }
+
+    protected void applyCutout(DeferredHolder<Block, ? extends Block> blockHolder) {
+        String name = blockHolder.getId().getPath();
+
+        models().getBuilder(name).renderType("minecraft:cutout");
+    }
+
 }

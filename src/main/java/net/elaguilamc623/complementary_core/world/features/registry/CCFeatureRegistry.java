@@ -1,0 +1,33 @@
+package net.elaguilamc623.complementary_core.world.features.registry;
+
+import net.elaguilamc623.complementary_core.ComplementaryCore;
+import net.elaguilamc623.complementary_core.world.features.config.custom.DefaultCustomDripstoneConfiguration;
+import net.elaguilamc623.complementary_core.world.features.config.custom.FallenLogConfig;
+import net.elaguilamc623.complementary_core.world.features.config.custom.PileFeatureConfiguration;
+import net.elaguilamc623.complementary_core.world.features.custom.DefaultCustomDripstoneFeature;
+import net.elaguilamc623.complementary_core.world.features.custom.FallenLogFeature;
+import net.elaguilamc623.complementary_core.world.features.custom.PileFeature;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.function.Supplier;
+
+public class CCFeatureRegistry {
+    public static final DeferredRegister<Feature<?>> FEATURES =
+            DeferredRegister.create(Registries.FEATURE, ComplementaryCore.MOD_ID);
+
+    public static final Supplier<Feature<FallenLogConfig>> FALLEN_LOG =
+            FEATURES.register("fallen_log", () -> new FallenLogFeature(FallenLogConfig.CODEC));
+
+    public static final Supplier<Feature<DefaultCustomDripstoneConfiguration>> DEFAULT_CUSTOM_DRIPSTONE_FEATURE =
+            FEATURES.register("default_custom_dripstone_feature", DefaultCustomDripstoneFeature::new);
+
+    public static final Supplier<Feature<PileFeatureConfiguration>> PILE_FEATURE =
+            FEATURES.register("pile_feature", () -> new PileFeature(PileFeatureConfiguration.CODEC));
+
+    public static void register(IEventBus bus) {
+        FEATURES.register(bus);
+    }
+}

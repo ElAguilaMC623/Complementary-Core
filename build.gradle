@@ -14,7 +14,7 @@ tasks.named('wrapper', Wrapper).configure {
     distributionType = Wrapper.DistributionType.BIN
 }
 
-version = "2.0.1"
+version = "2.0.3"
 group = "net.elaguilamc623"
 
 repositories {
@@ -165,7 +165,7 @@ publishing {
         mavenJava(MavenPublication) {
             groupId = 'net.elaguilamc623'
             artifactId = 'complementary_core'
-            version = '2.0.1'
+            version = '2.0.3'
 
             from components.java
         }

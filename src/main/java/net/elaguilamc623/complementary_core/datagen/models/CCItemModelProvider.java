@@ -1,5 +1,6 @@
 package net.elaguilamc623.complementary_core.datagen.models;
 
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -10,10 +11,12 @@ import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.core.registries.BuiltInRegistries;
 
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredBlock;
 
@@ -43,7 +46,7 @@ public abstract class CCItemModelProvider extends ItemModelProvider {
         this.modId = modId;
     }
 
-    protected ItemModelBuilder simpleItem(DeferredItem<Item> item) {
+    protected ItemModelBuilder simpleItem(DeferredHolder<Item, Item> item) {
         String name = item.getId().getPath();
         return withExistingParent(name, mcLoc("item/generated"))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(modId, "item/" + name));
@@ -67,24 +70,24 @@ public abstract class CCItemModelProvider extends ItemModelProvider {
         );
     }
 
-    protected void trapdoorItem(DeferredBlock<Block> block) {
+    protected void trapdoorItem(DeferredHolder<Block, Block> block) {
         String name = block.getId().getPath();
         withExistingParent(name, modLoc("block/" + name + "_bottom"));
     }
 
-    protected void fenceItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {
+    protected void fenceItem(DeferredHolder<Block, Block> block, DeferredHolder<Block, Block> baseBlock) {
         String name = block.getId().getPath();
         withExistingParent(name, mcLoc("block/fence_inventory"))
                 .texture("texture", ResourceLocation.fromNamespaceAndPath(modId, "block/" + baseBlock.getId().getPath()));
     }
 
-    protected void buttonItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {
+    protected void buttonItem(DeferredHolder<Block, Block> block, DeferredHolder<Block, Block> baseBlock) {
         String name = block.getId().getPath();
         withExistingParent(name, mcLoc("block/button_inventory"))
                 .texture("texture", ResourceLocation.fromNamespaceAndPath(modId, "block/" + baseBlock.getId().getPath()));
     }
 
-    protected void wallItem(DeferredBlock<Block> block, DeferredBlock<Block> baseBlock) {
+    protected void wallItem(DeferredHolder<Block, Block> block, DeferredHolder<Block, Block> baseBlock) {
         String name = block.getId().getPath();
         withExistingParent(name, mcLoc("block/wall_inventory"))
                 .texture("wall", ResourceLocation.fromNamespaceAndPath(modId, "block/" + baseBlock.getId().getPath()));

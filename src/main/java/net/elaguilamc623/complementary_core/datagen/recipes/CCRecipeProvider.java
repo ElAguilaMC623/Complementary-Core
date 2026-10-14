@@ -278,4 +278,28 @@ public abstract class CCRecipeProvider extends RecipeProvider {
                 .unlockedBy(getHasName(block), has(block))
                 .save(output);
     }
+
+    protected void barsRecipe(RecipeOutput recipeOutput,
+                              ItemLike output,
+                              ItemLike material) {
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 16)
+                .define('m', material)
+                .pattern("mmm")
+                .pattern("mmm")
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+    }
+
+    protected void defaultCrystalBlockRecipe(RecipeOutput recipeOutput,
+                                             ItemLike output,
+                                             ItemLike material) {
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, output, 1)
+                .define('m', material)
+                .pattern("mm")
+                .pattern("mm")
+                .unlockedBy("has_material", has(material))
+                .save(recipeOutput);
+    }
 }
