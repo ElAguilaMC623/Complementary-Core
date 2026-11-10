@@ -33,57 +33,53 @@ public class ToolSetBuilder {
         return new ToolSetBuilder(name, register, tier);
     }
 
-    public ToolSetBuilder sword() {
-        this.swordFactory = (t, p) -> new SwordItem(t, p);
+    public ToolSetBuilder sword(float attackDamage, float attackSpeed) {
+        this.swordFactory = (t, p) -> new SwordItem(t, p.attributes(SwordItem.createAttributes(t, attackDamage, attackSpeed)));
         return this;
     }
 
-    public ToolSetBuilder axe() {
-        this.axeFactory = (t, p) -> new AxeItem(t, p);
+    public ToolSetBuilder axe(float attackDamage, float attackSpeed) {
+        this.axeFactory = (t, p) -> new AxeItem(t, p.attributes(SwordItem.createAttributes(t, attackDamage, attackSpeed)));
         return this;
     }
 
-    public ToolSetBuilder pickaxe() {
-        this.pickaxeFactory = (t, p) -> new PickaxeItem(t, p);
+    public ToolSetBuilder pickaxe(float attackDamage, float attackSpeed) {
+        this.pickaxeFactory = (t, p) -> new PickaxeItem(t, p.attributes(SwordItem.createAttributes(t, attackDamage, attackSpeed)));
         return this;
     }
 
-    public ToolSetBuilder shovel() {
-        this.shovelFactory = (t, p) -> new ShovelItem(t, p);
+    public ToolSetBuilder shovel(float attackDamage, float attackSpeed) {
+        this.shovelFactory = (t, p) -> new ShovelItem(t, p.attributes(SwordItem.createAttributes(t, attackDamage, attackSpeed)));
         return this;
     }
 
-    public ToolSetBuilder hoe() {
-        this.hoeFactory = (t, p) -> new HoeItem(t, p);
+    public ToolSetBuilder hoe(float attackDamage, float attackSpeed) {
+        this.hoeFactory = (t, p) -> new HoeItem(t, p.attributes(SwordItem.createAttributes(t, attackDamage, attackSpeed)));
         return this;
     }
 
-    public void register() {
-
-        if (swordFactory != null) {
-            swordItem = register.register(name + "_sword",
-                    () -> swordFactory.apply(tier, new Item.Properties()));
+    public ToolSetBuilder register() {
+        if (this.swordFactory != null) {
+            this.swordItem = this.register.register(this.name + "_sword", () -> this.swordFactory.apply(this.tier, new Item.Properties()));
         }
 
-        if (axeFactory != null) {
-            axeItem = register.register(name + "_axe",
-                    () -> axeFactory.apply(tier, new Item.Properties()));
+        if (this.axeFactory != null) {
+            this.axeItem = this.register.register(this.name + "_axe", () -> this.axeFactory.apply(this.tier, new Item.Properties()));
         }
 
-        if (pickaxeFactory != null) {
-            pickaxeItem = register.register(name + "_pickaxe",
-                    () -> pickaxeFactory.apply(tier, new Item.Properties()));
+        if (this.pickaxeFactory != null) {
+            this.pickaxeItem = this.register.register(this.name + "_pickaxe", () -> this.pickaxeFactory.apply(this.tier, new Item.Properties()));
         }
 
-        if (shovelFactory != null) {
-            shovelItem = register.register(name + "_shovel",
-                    () -> shovelFactory.apply(tier, new Item.Properties()));
+        if (this.shovelFactory != null) {
+            this.shovelItem = this.register.register(this.name + "_shovel", () -> this.shovelFactory.apply(this.tier, new Item.Properties()));
         }
 
-        if (hoeFactory != null) {
-            hoeItem = register.register(name + "_hoe",
-                    () -> hoeFactory.apply(tier, new Item.Properties()));
+        if (this.hoeFactory != null) {
+            this.hoeItem = this.register.register(this.name + "_hoe", () -> this.hoeFactory.apply(this.tier, new Item.Properties()));
         }
+
+        return this;
     }
 
     public DeferredItem<Item> getSword() { return swordItem; }
