@@ -4,6 +4,7 @@ import net.elaguilamc623.complementary_core.ComplementaryCore;
 import net.elaguilamc623.complementary_core.world.features.config.custom.DefaultCustomDripstoneConfiguration;
 import net.elaguilamc623.complementary_core.world.features.config.custom.FallenLogConfig;
 import net.elaguilamc623.complementary_core.world.features.config.custom.PileFeatureConfiguration;
+import net.elaguilamc623.complementary_core.world.features.custom.AdaptedFreezeTopLayerFeature;
 import net.elaguilamc623.complementary_core.world.features.custom.DefaultCustomDripstoneFeature;
 import net.elaguilamc623.complementary_core.world.features.custom.FallenLogFeature;
 import net.elaguilamc623.complementary_core.world.features.custom.PileFeature;
@@ -25,6 +26,9 @@ public class CCFeatureRegistry {
 
     public static final RegistryObject<Feature<PileFeatureConfiguration>> PILE_FEATURE =
             FEATURES.register("pile_feature", () -> new PileFeature(PileFeatureConfiguration.CODEC));
+
+    public static final RegistryObject<AdaptedFreezeTopLayerFeature> ADAPTED_FREEZE_TOP_LAYER_FEATURE =
+            FEATURES.register("adapted_freeze_top_layer", AdaptedFreezeTopLayerFeature::new);
 
     public static void register(IEventBus bus) {
         FEATURES.register(bus);

@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
-
 import java.util.List;
 
 public class CCPlacedFeaturesTemplates {
@@ -60,6 +59,32 @@ public class CCPlacedFeaturesTemplates {
                 configured.getOrThrow(featureKey),
                 List.of(
                         CountPlacement.of(count),
+                        InSquarePlacement.spread(),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                        BlockPredicateFilter.forPredicate(BlockPredicate.replaceable()),
+                        BlockPredicateFilter.forPredicate(
+                                BlockPredicate.wouldSurvive(saplingState, BlockPos.ZERO)
+                        ),
+                        BiomeFilter.biome()
+                )
+        );
+    }
+
+    public static PlacedFeature treePlacedFeatureWithRarity(
+            HolderGetter<ConfiguredFeature<?, ?>> configured,
+            ResourceKey<ConfiguredFeature<?, ?>> featureKey,
+            int count,
+            int rarity,
+            Block sapling
+    ) {
+        BlockState saplingState = sapling.defaultBlockState();
+
+        return new PlacedFeature(
+                configured.getOrThrow(featureKey),
+                List.of(
+                        CountPlacement.of(count),
+                        RarityFilter.onAverageOnceEvery(rarity),
                         InSquarePlacement.spread(),
                         SurfaceWaterDepthFilter.forMaxDepth(0),
                         PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,

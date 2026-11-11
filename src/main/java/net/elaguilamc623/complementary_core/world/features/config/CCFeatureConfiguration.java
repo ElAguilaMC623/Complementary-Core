@@ -11,9 +11,9 @@ import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-
 import java.util.List;
 
+@SuppressWarnings("removal")
 public class CCFeatureConfiguration {
 
     public static <FC extends FeatureConfiguration, F extends Feature<FC>> Holder<ConfiguredFeature<?, ?>> register(
@@ -40,8 +40,7 @@ public class CCFeatureConfiguration {
         );
     }
 
-    public static <FC extends FeatureConfiguration, F extends Feature<FC>>
-    void registerConfigured(
+    public static <FC extends FeatureConfiguration, F extends Feature<FC>> void registerConfigured(
             BootstapContext<ConfiguredFeature<?, ?>> context,
             ResourceKey<ConfiguredFeature<?, ?>> key,
             F feature,

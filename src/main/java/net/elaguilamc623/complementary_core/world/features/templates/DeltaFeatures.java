@@ -12,6 +12,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import java.util.List;
 
+@SuppressWarnings("removal")
 public class DeltaFeatures {
     public static ResourceKey<ConfiguredFeature<?, ?>> configuredKey(String namespace, String name) {
         return ResourceKey.create(
