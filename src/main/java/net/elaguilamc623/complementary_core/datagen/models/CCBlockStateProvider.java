@@ -6,6 +6,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -117,5 +118,22 @@ public abstract class CCBlockStateProvider extends BlockStateProvider {
         ModelFile model = models().cross(name, modLoc("block/" + name));
 
         getVariantBuilder(block).partialState().setModels(new ConfiguredModel(model));
+    }
+
+    protected void vineBlock(Block block) {
+        String blockName = ForgeRegistries.BLOCKS.getKey(block).getPath();
+
+        ResourceLocation texture = modLoc("block/" + blockName);
+
+        var model = models().withExistingParent(blockName, "minecraft:block/vine")
+                .texture("vine", texture);
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block);
+
+        builder.part().modelFile(model).addModel().condition(VineBlock.UP, true).end();
+        builder.part().modelFile(model).rotationY(0).addModel().condition(VineBlock.NORTH, true).end();
+        builder.part().modelFile(model).rotationY(90).addModel().condition(VineBlock.EAST, true).end();
+        builder.part().modelFile(model).rotationY(180).addModel().condition(VineBlock.SOUTH, true).end();
+        builder.part().modelFile(model).rotationY(270).addModel().condition(VineBlock.WEST, true).end();
     }
 }
